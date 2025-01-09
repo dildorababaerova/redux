@@ -1,24 +1,18 @@
-import React from 'react'; // Notice useEffect is imported here
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, zero } from './redux/store';
-import store from './redux/store'; // Only needed for manual subscription
+// import React from 'react'; // Notice useEffect is imported here
+// import store from './redux/store'; // Only needed for manual subscription
 
-const App = () => {
-    const counter = useSelector((state) => state);
-    const dispatch = useDispatch();
+// const App = () => {
+//     return(
+//       <div>
+//         <ul>
+//           {store.getState().map(note=>
+//             <li key={note.id}>
+//               {note.content} <strong>{note.important ? 'important' : ''}</strong>
+//             </li>
+//           )}
+//           </ul>
+//       </div>
+//     )
+//   }
 
-    console.log('App rendered', store.getState());
-
-    return (
-        <div>
-            <h1>Counter: {counter}</h1>
-           
-            <button onClick={() => dispatch(increment())}>Increment</button>
-            
-            <button onClick={() => dispatch(decrement())}>Decrement</button>
-            <button onClick={() => dispatch(zero())}>Reset</button>
-        </div>
-    );
-};
-
-export default App;
+// export default App;
