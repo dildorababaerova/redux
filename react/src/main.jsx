@@ -8,8 +8,7 @@ import App from './App.jsx';
 
 const store = createStore(noteReducer);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />
   </Provider>

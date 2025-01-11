@@ -1,9 +1,3 @@
-// reducers/noteReducer.js
-// const initialState = [
-//   { id: 1, content: 'First note from Redux', important: true },
-//   { id: 2, content: 'Second note from Redux', important: false },
-// ];
-
 const noteReducer = (state = [], action) => {
   switch (action.type) {
     case 'NEW_NOTE':
@@ -19,6 +13,28 @@ const noteReducer = (state = [], action) => {
     }
     default:
       return state;
+  }
+};
+
+const generateId = () =>  
+  Number((Math.random() * 1000000).toFixed(0));
+
+export const createNote = (content) => {
+  return {
+    type: 'NEW_NOTE',
+    payload: {
+      content,
+      important: false,
+      id: generateId()
+    }
+  }
+}
+
+// Function to toggle importance
+export const toggleImportanceOf = (id) => {
+  return {
+    type: 'TOGGLE_IMPORTANCE',
+    payload: { id }
   }
 };
 
