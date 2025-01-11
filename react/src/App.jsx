@@ -1,18 +1,34 @@
-// import React from 'react'; // Notice useEffect is imported here
-// import store from './redux/store'; // Only needed for manual subscription
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-// const App = () => {
-//     return(
-//       <div>
-//         <ul>
-//           {store.getState().map(note=>
-//             <li key={note.id}>
-//               {note.content} <strong>{note.important ? 'important' : ''}</strong>
-//             </li>
-//           )}
-//           </ul>
-//       </div>
-//     )
-//   }
+const App = () => {
+  const notes = useSelector(state => state); // Доступ к состоянию Redux
+  const dispatch = useDispatch(); // Функция для отправки действий
 
-// export default App;
+  // Обработчик для переключения важности
+  const toggleImportance = (id) => {
+    dispatch({
+      type: 'TOGGLE_IMPORTANCE',
+      payload: { id },
+    });
+  };
+
+  return (
+    <div>
+      <ul>
+        {notes.map(note => (
+          <li key={note.id}>
+            {note.content}{' '}
+            <strong>{note.important ? 'important' : ''}</strong>{' '}
+            {/* Кнопка для изменения важности */}
+            <button onClick={() => toggleImportance(note.id)}>
+              Toggle Importance
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
