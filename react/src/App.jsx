@@ -1,17 +1,27 @@
-import React from 'react';
-import Notes from './Notes';
-import NewNote from './NewNote';
+import NewNote from './components/NewNote'
+import Notes from './components/Notes'
 
 const App = () => {
+
+  const filterSelected = (value) => {
+    console.log(value)
+  }
+
   return (
     <div>
-      <h2>Notes</h2>
-      <ul>
-      <NewNote/>
-       <Notes/> 
-      </ul>
-    </div>
-  );
-};
+      <NewNote />
 
-export default App;
+      <div>
+        all  <input type="radio" name="filter"
+          onChange={() => filterSelected('ALL')} />
+        important    <input type="radio" name="filter"
+          onChange={() => filterSelected('IMPORTANT')} />
+        nonimportant <input type="radio" name="filter"
+          onChange={() => filterSelected('NONIMPORTANT')} />
+      </div>
+      <Notes />
+    </div>
+  )
+}
+
+export default App

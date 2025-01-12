@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleImportanceOf } from './reducers/noteReducer'
+import { toggleImportanceOf } from '../reducers/noteReducer'
 
 const Note = ({ note, handleClick }) => {
   return(
@@ -11,9 +11,8 @@ const Note = ({ note, handleClick }) => {
 }
 
 const Notes = () => {
-
   const dispatch = useDispatch()
-  const notes = useSelector(state => state)
+  const notes = useSelector(state => state.notes)
 
   return(
     <ul>
