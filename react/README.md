@@ -13,3 +13,7 @@ Currently, two official plugins are available:
 `npm install redux`
 
 * The whole state of the application is stored in one JavaScript object in the store. The state of the store is changed with actions.
+
+* `npm install @reduxjs/toolkit`
+
+* `array.splice(start, deleteCount, ...itemsToAdd)` delete, add end replace
