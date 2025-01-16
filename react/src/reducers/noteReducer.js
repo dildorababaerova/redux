@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { current, createSlice } from '@reduxjs/toolkit'
 
 const initialState = [
   {
@@ -28,13 +28,16 @@ const noteSlice = createSlice({
         id: generateId(),
       })
     },
-  toggleImportanceOf(state, action) {
-    const id = action.payload
-    const noteToChange = state.find(note => note.id === id)
-    const changedNote = {
-      ...noteToChange,
-      important: !noteToChange.important
-    }
+    
+    toggleImportanceOf(state, action) {
+      const id = action.payload
+      const noteToChange = state.find(note => note.id === id)
+      const changedNote = {
+        ...noteToChange,
+        important: !noteToChange.important
+      }
+    
+      console.log("STATE", current(state))
     return state.map(note =>
       note.id !== id ? note : changedNote
     )
@@ -48,5 +51,4 @@ const noteSlice = createSlice({
 
 export const { createNote, toggleImportanceOf } = noteSlice.actions; 
 
-// Экспортируем редьюсер
 export default noteSlice.reducer;
