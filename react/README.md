@@ -17,3 +17,5 @@ Currently, two official plugins are available:
 * `npm install @reduxjs/toolkit`
 
 * `array.splice(start, deleteCount, ...itemsToAdd)` delete, add end replace
+* `npm install json-server --save-dev`
+* `npm install axios`
