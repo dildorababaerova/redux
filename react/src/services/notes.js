@@ -7,9 +7,24 @@ const getAll = async () => {
         return response.data;
     } catch (error) {
         console.error("Error fetching notes:", error);
-        throw error; // или вернуть сообщение об ошибке
+        throw error; 
     }
 };
 
+const createNew = async (content) => {
+    const object = { content, important: false };
+    const response = await axios.post(baseUrl, object);
+    return response.data;
+} 
 
-    export default { getAll };
+const importanceOf =  async (id) => {
+    const url = `${baseUrl}/${id}`;
+    const note = await axios.get(url);
+    const changedNote = { ...note.data, important: !note.data.important };
+    const response = await axios.put(url, changedNote);
+    return response.data;
+}
+    
+
+
+    export default { getAll, createNew, importanceOf };

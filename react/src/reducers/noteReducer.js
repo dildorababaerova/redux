@@ -1,4 +1,5 @@
 import { current, createSlice } from '@reduxjs/toolkit'
+// import { create } from 'json-server';
 
 const generateId = () =>  
   Number((Math.random() * 1000000).toFixed(0));
@@ -14,6 +15,7 @@ const noteSlice = createSlice({
         important: false,
         id: generateId(),
       })
+      console.log("STATE", current(state))
     },
     
     toggleImportanceOf(state, action) {
