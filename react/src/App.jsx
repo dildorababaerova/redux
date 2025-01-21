@@ -9,10 +9,13 @@ import noteService from './services/notes'
 const App = () => {
   const dispatch = useDispatch()
   useEffect(() => {
-    noteService.getAll().then(notes =>
-      dispatch(setNotes(notes))
-    )
-  }, [])
+    const fetchData = async () => {
+      const data = await noteService.getAll();
+      dispatch(setNotes(data));
+    };
+    fetchData();
+  }, [dispatch]);
+  
 
   return (
     <div>
